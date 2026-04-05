@@ -1,232 +1,162 @@
 <template>
-  <div class="home-container">
-    <!-- Top Navigation Bar -->
-    <nav class="navbar" :style="s.navbar">
-      <div class="nav-brand" :style="s.navBrand">REGUSIM</div>
-      <div class="nav-links" :style="s.navLinks">
-        <a href="https://github.com/nikmcfly/ReguSim" target="_blank" class="github-link" :style="s.githubLink">
-          Visit our Github <span>↗</span>
+  <div class="home">
+    <!-- Animated background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Top Bar -->
+    <nav class="topbar">
+      <div class="topbar-brand">
+        <img src="@/assets/logo/Logo_Regusim.png" class="brand-logo" alt="ReguSim" />
+      </div>
+      <div class="topbar-links">
+        <a href="https://github.com/nikmcfly/ReguSim" target="_blank" class="topbar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
         </a>
+        <span class="topbar-version">v0.1-preview</span>
       </div>
     </nav>
 
-    <div class="main-content" :style="s.mainContent">
-      <!-- Hero Section -->
-      <section class="hero-section" :style="s.heroSection">
-        <div class="hero-left" :style="s.heroLeft">
-          <div class="tag-row" :style="s.tagRow">
-            <span class="orange-tag" :style="s.orangeTag">AI-Powered Regulatory Impact Assessment</span>
-            <span class="version-text" :style="s.versionText">/ v0.1-preview</span>
-          </div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        AI-Powered Regulatory Impact Assessment
+      </div>
 
-          <h1 class="main-title" :style="s.mainTitle">
-            Upload Regulatory Draft<br>
-            <span class="gradient-text" :style="s.gradientText">Simulate Stakeholder Impact</span>
-          </h1>
+      <h1 class="hero-title">
+        Simulate Regulation.<br>
+        <span class="hero-title-accent">Predict Impact.</span>
+      </h1>
 
-          <div class="hero-desc" :style="s.heroDesc">
-            <p :style="s.heroDescP">
-              Upload a policy draft or regulatory document, and <span :style="s.highlightBold">ReguSim</span> builds a multi-agent simulation of <span :style="s.highlightOrange">Indonesian financial stakeholders</span> — from OJK and Bank Indonesia to fintech startups and public voices. Predict <span :style="s.highlightCode">regulatory impact</span> before implementation.
-            </p>
-            <p class="slogan-text" :style="s.sloganText">
-              Simulate regulation. Predict impact. Decide with confidence<span :style="s.blinkingCursor">_</span>
-            </p>
-          </div>
+      <p class="hero-subtitle">
+        Upload a policy draft and ReguSim builds a multi-agent simulation of
+        <strong>Indonesian financial stakeholders</strong> — from OJK and Bank Indonesia
+        to fintech startups and public voices.
+      </p>
 
-          <div class="decoration-square" :style="s.decorationSquare"></div>
-        </div>
+      <div class="hero-scroll" @click="scrollToBottom">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+    </section>
 
-        <div class="hero-right" :style="s.heroRight">
-          <div class="logo-container" :style="s.logoContainer">
-            <img src="../assets/logo/ReguSim_logo_left.jpeg" alt="ReguSim Logo" :style="s.heroLogo" />
-          </div>
-          <button :style="s.scrollDownBtn" @click="scrollToBottom">↓</button>
-        </div>
-      </section>
-
-      <!-- Dashboard: Two-Column Layout -->
-      <section class="dashboard-section" :style="s.dashboardSection">
-        <!-- Left Column: Status & Steps -->
-        <div class="left-panel" :style="s.leftPanel">
-          <div class="panel-header" :style="s.panelHeader">
-            <span :style="s.statusDot">■</span> System Status
-          </div>
-
-          <h2 class="section-title" :style="s.sectionTitle">Ready</h2>
-          <p class="section-desc" :style="s.sectionDesc">
-            Regulatory impact engine on standby. Upload policy documents to begin RIA simulation.
-          </p>
-
-          <div class="metrics-row" :style="s.metricsRow">
-            <div class="metric-card" :style="s.metricCard">
-              <div class="metric-value" :style="s.metricValue">Local</div>
-              <div class="metric-label" :style="s.metricLabel">100% offline, data stays private</div>
+    <!-- Main Content -->
+    <div class="content-wrapper">
+      <!-- Upload + Scenario Card -->
+      <section class="launch-card">
+        <div class="launch-card-inner">
+          <!-- Left: Upload -->
+          <div class="launch-left">
+            <div class="launch-section-label">
+              <span class="label-num">01</span>
+              Regulatory Documents
+              <span class="label-hint">PDF, MD, TXT</span>
             </div>
-            <div class="metric-card" :style="s.metricCard">
-              <div class="metric-value" :style="s.metricValue">RIA</div>
-              <div class="metric-label" :style="s.metricLabel">Regulatory Impact Assessment</div>
-            </div>
-          </div>
-
-          <div class="steps-container" :style="s.stepsContainer">
-            <div class="steps-header" :style="s.stepsHeader">
-               <span :style="s.diamondIcon">◇</span> Workflow Sequence
-            </div>
-            <div :style="s.workflowList">
-              <div v-for="(step, i) in steps" :key="i" :style="s.workflowItem">
-                <span :style="s.stepNum">{{ step.num }}</span>
-                <div :style="s.stepInfo">
-                  <div :style="s.stepTitle">{{ step.title }}</div>
-                  <div :style="s.stepDesc">{{ step.desc }}</div>
+            <div
+              class="upload-zone"
+              :class="{ 'drag-over': isDragOver, 'has-files': files.length > 0 }"
+              @dragover.prevent="handleDragOver"
+              @dragleave.prevent="handleDragLeave"
+              @drop.prevent="handleDrop"
+              @click="triggerFileInput"
+            >
+              <input ref="fileInput" type="file" multiple accept=".pdf,.md,.txt" @change="handleFileSelect" style="display:none" :disabled="loading" />
+              <div v-if="files.length === 0" class="upload-empty">
+                <div class="upload-icon-ring">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+                <div class="upload-label">Drop files or <span>browse</span></div>
+              </div>
+              <div v-else class="file-chips">
+                <div v-for="(file, index) in files" :key="index" class="file-chip">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <span class="file-chip-name">{{ file.name }}</span>
+                  <button class="file-chip-remove" @click.stop="removeFile(index)">×</button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Right Column: Interactive Console -->
-        <div class="right-panel" :style="s.rightPanel">
-          <div class="console-box" :style="s.consoleBox">
-            <div :style="s.consoleSection">
-              <div class="console-header" :style="s.consoleHeader">
-                <span>01 / Regulatory Documents</span>
-                <span>Supported: PDF, MD, TXT</span>
-              </div>
-              <div
-                :style="s.uploadZone"
-                @dragover.prevent="handleDragOver"
-                @dragleave.prevent="handleDragLeave"
-                @drop.prevent="handleDrop"
-                @click="triggerFileInput"
-              >
-                <input ref="fileInput" type="file" multiple accept=".pdf,.md,.txt" @change="handleFileSelect" style="display: none" :disabled="loading" />
-                <div v-if="files.length === 0" :style="s.uploadPlaceholder">
-                  <div :style="s.uploadIcon">↑</div>
-                  <div :style="s.uploadTitle">Drag & drop files here</div>
-                  <div :style="s.uploadHint">or click to browse</div>
-                </div>
-                <div v-else :style="s.fileList">
-                  <div v-for="(file, index) in files" :key="index" :style="s.fileItem">
-                    <span>📄</span>
-                    <span :style="s.fileName">{{ file.name }}</span>
-                    <button @click.stop="removeFile(index)" :style="s.removeBtn">×</button>
-                  </div>
-                </div>
-              </div>
+          <!-- Right: Scenario + Button -->
+          <div class="launch-right">
+            <div class="launch-section-label">
+              <span class="label-num">02</span>
+              Regulatory Scenario
             </div>
-
-            <div :style="s.consoleDivider"><span :style="s.consoleDividerText">Parameters</span></div>
-
-            <div :style="s.consoleSection">
-              <div class="console-header" :style="s.consoleHeader">
-                <span>>_ 02 / Regulatory Scenario</span>
-              </div>
-              <div :style="s.inputWrapper">
-                <textarea v-model="formData.simulationRequirement" :style="s.codeInput" placeholder="// Describe the regulation or policy scenario to simulate, e.g. 'OJK mandates open banking API standard for all fintech lenders by Q3 2026'" rows="6" :disabled="loading"></textarea>
-                <div :style="s.modelBadge">Engine: Ollama + Neo4j (local)</div>
-              </div>
+            <div class="scenario-input-wrapper">
+              <textarea
+                v-model="formData.simulationRequirement"
+                class="scenario-input"
+                placeholder="Describe the regulation to simulate, e.g. 'OJK mandates open banking API standard for all fintech lenders by Q3 2026'"
+                rows="5"
+                :disabled="loading"
+              ></textarea>
+              <div class="engine-badge">Ollama + Neo4j · Local</div>
             </div>
-
-            <div :style="s.btnSection">
-              <button :style="s.startEngineBtn" @click="startSimulation" :disabled="!canSubmit || loading">
-                <span v-if="!loading">Run RIA Simulation</span>
-                <span v-else>Initializing...</span>
-                <span>→</span>
-              </button>
-            </div>
+            <button class="launch-btn" @click="startSimulation" :disabled="!canSubmit || loading">
+              <span v-if="!loading">Launch RIA Simulation</span>
+              <span v-else>Initializing...</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
           </div>
         </div>
       </section>
 
+      <!-- Workflow Steps -->
+      <section class="workflow">
+        <div class="workflow-header">
+          <div class="workflow-line"></div>
+          <span class="workflow-label">Workflow</span>
+          <div class="workflow-line"></div>
+        </div>
+        <div class="steps-row">
+          <div v-for="(step, i) in steps" :key="i" class="step-tile">
+            <div class="step-tile-num">{{ step.num }}</div>
+            <div class="step-tile-title">{{ step.title }}</div>
+            <div class="step-tile-desc">{{ step.desc }}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Metrics Row -->
+      <section class="metrics-strip">
+        <div class="metric-box">
+          <div class="metric-val">100%</div>
+          <div class="metric-lbl">Offline & Private</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-box">
+          <div class="metric-val">RIA</div>
+          <div class="metric-lbl">Regulatory Impact Assessment</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-box">
+          <div class="metric-val">Multi-Agent</div>
+          <div class="metric-lbl">LLM-driven Stakeholder Simulation</div>
+        </div>
+      </section>
+
+      <!-- History -->
       <HistoryDatabase />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, reactive } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import HistoryDatabase from '../components/HistoryDatabase.vue'
 
-const mono = 'JetBrains Mono, monospace'
-const sans = 'Space Grotesk, Noto Sans SC, system-ui, sans-serif'
-
-const s = reactive({
-  navbar: { height: '60px', background: '#1E3A5F', color: '#fff', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 40px' },
-  navBrand: { fontFamily: mono, fontWeight: '800', letterSpacing: '1px', fontSize: '1.2rem' },
-  navLinks: { display: 'flex', alignItems: 'center' },
-  githubLink: { color: '#fff', textDecoration: 'none', fontFamily: mono, fontSize: '0.9rem', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '8px' },
-  mainContent: { maxWidth: '1400px', margin: '0 auto', padding: '60px 40px' },
-  heroSection: { display: 'flex', justifyContent: 'space-between', marginBottom: '80px', position: 'relative' },
-  heroLeft: { flex: '1', paddingRight: '60px' },
-  tagRow: { display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontFamily: mono, fontSize: '0.8rem' },
-  orangeTag: { background: '#2F7F7A', color: '#fff', padding: '4px 10px', fontWeight: '700', letterSpacing: '1px', fontSize: '0.75rem' },
-  versionText: { color: '#999', fontWeight: '500', letterSpacing: '0.5px' },
-  mainTitle: { fontSize: '4.5rem', lineHeight: '1.2', fontWeight: '500', margin: '0 0 40px 0', letterSpacing: '-2px', color: '#000' },
-  gradientText: { background: 'linear-gradient(90deg, #1E3A5F 0%, #2F7F7A 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' },
-  heroDesc: { fontSize: '1.05rem', lineHeight: '1.8', color: '#666', maxWidth: '640px', marginBottom: '50px', fontWeight: '400', textAlign: 'justify' },
-  heroDescP: { marginBottom: '1.5rem' },
-  highlightBold: { color: '#000', fontWeight: '700' },
-  highlightOrange: { color: '#2F7F7A', fontWeight: '700', fontFamily: mono },
-  highlightCode: { background: 'rgba(0,0,0,0.05)', padding: '2px 6px', borderRadius: '2px', fontFamily: mono, fontSize: '0.9em', color: '#000', fontWeight: '600' },
-  sloganText: { fontSize: '1.2rem', fontWeight: '520', color: '#000', letterSpacing: '1px', borderLeft: '3px solid #2F7F7A', paddingLeft: '15px', marginTop: '20px' },
-  blinkingCursor: { color: '#2F7F7A', fontWeight: '700' },
-  decorationSquare: { width: '16px', height: '16px', background: '#2F7F7A' },
-  heroRight: { flex: '0.8', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-end' },
-  logoContainer: { width: '100%', display: 'flex', justifyContent: 'flex-end', paddingRight: '40px' },
-  heroLogo: { maxWidth: '500px', width: '100%' },
-  scrollDownBtn: { width: '40px', height: '40px', border: '1px solid #E5E5E5', background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#2F7F7A', fontSize: '1.2rem' },
-  dashboardSection: { display: 'flex', gap: '60px', borderTop: '1px solid #E5E5E5', paddingTop: '60px', alignItems: 'flex-start' },
-  leftPanel: { flex: '0.8', display: 'flex', flexDirection: 'column' },
-  panelHeader: { fontFamily: mono, fontSize: '0.8rem', color: '#999', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' },
-  statusDot: { color: '#2F7F7A', fontSize: '0.8rem' },
-  sectionTitle: { fontSize: '2rem', fontWeight: '520', margin: '0 0 15px 0' },
-  sectionDesc: { color: '#666', marginBottom: '25px', lineHeight: '1.6' },
-  metricsRow: { display: 'flex', gap: '20px', marginBottom: '15px' },
-  metricCard: { border: '1px solid #E5E5E5', padding: '20px 30px', minWidth: '150px' },
-  metricValue: { fontFamily: mono, fontSize: '1.8rem', fontWeight: '520', marginBottom: '5px' },
-  metricLabel: { fontSize: '0.85rem', color: '#999' },
-  stepsContainer: { border: '1px solid #E5E5E5', padding: '30px', position: 'relative' },
-  stepsHeader: { fontFamily: mono, fontSize: '0.8rem', color: '#999', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '8px' },
-  diamondIcon: { fontSize: '1.2rem', lineHeight: '1' },
-  workflowList: { display: 'flex', flexDirection: 'column', gap: '20px' },
-  workflowItem: { display: 'flex', alignItems: 'flex-start', gap: '20px' },
-  stepNum: { fontFamily: mono, fontWeight: '700', color: '#000', opacity: '0.3' },
-  stepInfo: { flex: '1' },
-  stepTitle: { fontWeight: '520', fontSize: '1rem', marginBottom: '4px' },
-  stepDesc: { fontSize: '0.85rem', color: '#666' },
-  rightPanel: { flex: '1.2', display: 'flex', flexDirection: 'column' },
-  consoleBox: { border: '1px solid #CCC', padding: '8px' },
-  consoleSection: { padding: '20px' },
-  consoleHeader: { display: 'flex', justifyContent: 'space-between', marginBottom: '15px', fontFamily: mono, fontSize: '0.75rem', color: '#666' },
-  uploadZone: { border: '1px dashed #CCC', height: '200px', overflowY: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', background: '#FAFAFA' },
-  uploadPlaceholder: { textAlign: 'center' },
-  uploadIcon: { width: '40px', height: '40px', border: '1px solid #DDD', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px', color: '#999' },
-  uploadTitle: { fontWeight: '500', fontSize: '0.9rem', marginBottom: '5px' },
-  uploadHint: { fontFamily: mono, fontSize: '0.75rem', color: '#999' },
-  fileList: { width: '100%', padding: '15px', display: 'flex', flexDirection: 'column', gap: '10px' },
-  fileItem: { display: 'flex', alignItems: 'center', background: '#fff', padding: '8px 12px', border: '1px solid #EEE', fontFamily: mono, fontSize: '0.85rem' },
-  fileName: { flex: '1', margin: '0 10px' },
-  removeBtn: { background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', color: '#999' },
-  consoleDivider: { display: 'flex', alignItems: 'center', margin: '10px 0', borderTop: '1px solid #EEE' },
-  consoleDividerText: { padding: '0 15px', fontFamily: mono, fontSize: '0.7rem', color: '#BBB', letterSpacing: '1px' },
-  inputWrapper: { position: 'relative', border: '1px solid #DDD', background: '#FAFAFA' },
-  codeInput: { width: '100%', border: 'none', background: 'transparent', padding: '20px', fontFamily: mono, fontSize: '0.9rem', lineHeight: '1.6', resize: 'vertical', outline: 'none', minHeight: '150px' },
-  modelBadge: { position: 'absolute', bottom: '10px', right: '15px', fontFamily: mono, fontSize: '0.7rem', color: '#AAA' },
-  btnSection: { padding: '0 20px 20px' },
-  startEngineBtn: { width: '100%', background: '#1E3A5F', color: '#fff', border: 'none', padding: '20px', fontFamily: mono, fontWeight: '700', fontSize: '1.1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', letterSpacing: '1px' },
-})
-
 const steps = [
-  { num: '01', title: 'Regulatory Graph', desc: 'Extract entities (regulators, fintech, banks, policies) from your document and build a regulatory knowledge graph' },
-  { num: '02', title: 'Stakeholder Setup', desc: 'Generate stakeholder personas — OJK, BI, banks, fintech startups, public — with realistic behavioral profiles' },
-  { num: '03', title: 'Impact Simulation', desc: 'Run multi-agent simulation where stakeholders react, debate, and adapt to the proposed regulation' },
-  { num: '04', title: 'RIA Report', desc: 'Generate a structured Regulatory Impact Assessment report with sentiment analysis and stakeholder feedback' },
-  { num: '05', title: 'Stakeholder Chat', desc: 'Chat directly with any simulated stakeholder to explore their reasoning and regulatory concerns' },
+  { num: '01', title: 'Regulatory Graph', desc: 'Extract entities from documents and build a regulatory knowledge graph' },
+  { num: '02', title: 'Stakeholder Setup', desc: 'Generate stakeholder personas with realistic behavioral profiles' },
+  { num: '03', title: 'Impact Simulation', desc: 'Multi-agent simulation of stakeholder reactions to regulation' },
+  { num: '04', title: 'RIA Report', desc: 'Structured Regulatory Impact Assessment with sentiment analysis' },
+  { num: '05', title: 'Stakeholder Chat', desc: 'Chat directly with any simulated stakeholder agent' },
 ]
 
 const router = useRouter()
-
 const formData = ref({ simulationRequirement: '' })
 const files = ref([])
 const loading = ref(false)
@@ -240,8 +170,8 @@ const canSubmit = computed(() => {
 
 const triggerFileInput = () => { if (!loading.value) fileInput.value?.click() }
 const handleFileSelect = (event) => { addFiles(Array.from(event.target.files)) }
-const handleDragOver = (e) => { isDragOver.value = true }
-const handleDragLeave = (e) => { isDragOver.value = false }
+const handleDragOver = () => { isDragOver.value = true }
+const handleDragLeave = () => { isDragOver.value = false }
 const handleDrop = (e) => { isDragOver.value = false; addFiles(Array.from(e.dataTransfer.files)) }
 
 const addFiles = (newFiles) => {
@@ -251,7 +181,6 @@ const addFiles = (newFiles) => {
 }
 
 const removeFile = (index) => { files.value.splice(index, 1) }
-
 const scrollToBottom = () => { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }) }
 
 const startSimulation = () => {
@@ -263,4 +192,257 @@ const startSimulation = () => {
 }
 </script>
 
-<!-- Styles loaded from Home.css via import -->
+<style scoped>
+.home {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background: var(--bg-base);
+}
+
+/* Background — subtle warm tone with a faint navy vignette on top */
+.bg-gradient {
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -5%, rgba(30,58,95,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(47,127,122,0.04) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,58,95,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,58,95,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+
+/* TOPBAR — with subtle navy accent line */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 56px;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(30,58,95,0.04);
+}
+.topbar-brand { display: flex; align-items: center; }
+.brand-logo {
+  height: 32px; width: auto;
+}
+.topbar-links { display: flex; align-items: center; gap: 16px; }
+.topbar-link {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s;
+}
+.topbar-link:hover { color: var(--accent); }
+.topbar-version {
+  font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent);
+  padding: 3px 10px; border: 1px solid var(--accent-border); border-radius: var(--radius-sm);
+  background: var(--accent-bg);
+}
+
+/* HERO — with decorative accent */
+.hero {
+  position: relative; z-index: 1; text-align: center;
+  padding: 90px 32px 48px; max-width: 720px; margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px; border-radius: 20px;
+  background: var(--accent); border: none;
+  font-size: 0.74rem; font-weight: 600; color: #fff;
+  margin-bottom: 32px; letter-spacing: 0.4px;
+  box-shadow: 0 2px 12px rgba(30,58,95,0.18);
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.7);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 3.4rem; font-weight: 700; line-height: 1.18;
+  letter-spacing: -0.5px; margin-bottom: 24px;
+  color: var(--text-primary);
+}
+.hero-title-accent {
+  color: var(--secondary);
+  -webkit-text-fill-color: var(--secondary);
+}
+.hero-subtitle {
+  font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary);
+  max-width: 540px; margin: 0 auto 36px;
+}
+.hero-subtitle strong { color: var(--accent); font-weight: 600; }
+.hero-scroll {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1.5px solid var(--border); color: var(--text-muted); cursor: pointer;
+  transition: all 0.3s ease;
+}
+.hero-scroll:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+
+/* CONTENT */
+.content-wrapper {
+  position: relative; z-index: 1;
+  max-width: 1060px; margin: 0 auto; padding: 0 32px 80px;
+}
+
+/* LAUNCH CARD — elevated with navy top accent */
+.launch-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(30,58,95,0.08), 0 1px 4px rgba(0,0,0,0.03);
+  margin-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.launch-card-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.launch-left, .launch-right { padding: 32px; }
+.launch-left { border-right: 1px solid var(--border-light); }
+.launch-section-label {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.72rem; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 18px;
+}
+.label-num {
+  font-family: var(--font-mono); font-size: 0.68rem; color: #fff;
+  background: var(--accent); padding: 3px 9px; border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+.label-hint {
+  margin-left: auto; font-size: 0.66rem; color: var(--text-muted);
+  font-weight: 500; text-transform: none; letter-spacing: 0;
+}
+
+/* Upload zone */
+.upload-zone {
+  border: 1.5px dashed var(--border); border-radius: var(--radius-md);
+  min-height: 200px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s ease; background: var(--bg-warm);
+}
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--secondary); background: var(--secondary-bg);
+}
+.upload-zone.has-files { align-items: flex-start; padding: 16px; }
+.upload-empty { text-align: center; }
+.upload-icon-ring {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 1.5px solid var(--border); background: var(--bg-base);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px; color: var(--text-muted); transition: all 0.3s ease;
+}
+.upload-zone:hover .upload-icon-ring {
+  border-color: var(--secondary); color: var(--secondary); background: var(--secondary-bg);
+}
+.upload-label { font-size: 0.85rem; color: var(--text-muted); }
+.upload-label span { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* File chips */
+.file-chips { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+.file-chip {
+  display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+  background: var(--bg-warm); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--text-secondary);
+  transition: border-color 0.2s;
+}
+.file-chip:hover { border-color: var(--accent-border); }
+.file-chip svg { color: var(--accent); flex-shrink: 0; }
+.file-chip-name { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.file-chip-remove {
+  background:none; border:none; color:var(--text-muted);
+  font-size:1rem; cursor:pointer; padding:0 2px; line-height:1;
+}
+.file-chip-remove:hover { color: var(--rose); }
+
+/* Scenario input */
+.scenario-input-wrapper { position: relative; margin-bottom: 18px; }
+.scenario-input {
+  width:100%; background:var(--bg-warm); border:1px solid var(--border);
+  border-radius:var(--radius-md); color:var(--text-primary);
+  font-family:var(--font-sans); font-size:0.88rem; line-height:1.7;
+  padding:16px; resize:vertical; outline:none; min-height:140px;
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+.scenario-input::placeholder { color:var(--text-muted); }
+.scenario-input:focus { border-color:var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+.engine-badge {
+  position:absolute; bottom:10px; right:12px;
+  font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted); opacity:0.6;
+}
+
+/* Launch button — navy with teal hover */
+.launch-btn {
+  width:100%; display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:14px 24px; border:none; border-radius:var(--radius-md);
+  background:var(--accent); color:#fff;
+  font-weight:600; font-size:0.92rem; cursor:pointer;
+  transition:all 0.25s ease; letter-spacing: 0.2px;
+}
+.launch-btn:hover:not(:disabled) {
+  background: var(--secondary); transform:translateY(-1px);
+  box-shadow: 0 4px 16px rgba(47,127,122,0.25);
+}
+.launch-btn:disabled { opacity:0.3; cursor:not-allowed; transform:none; }
+
+/* WORKFLOW */
+.workflow { margin-bottom: 56px; }
+.workflow-header { display:flex; align-items:center; gap:16px; margin-bottom:28px; }
+.workflow-line { flex:1; height:1px; background:var(--border); }
+.workflow-label {
+  font-size:0.68rem; font-weight:600; text-transform:uppercase;
+  letter-spacing:2px; color:var(--text-muted);
+}
+.steps-row { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+.step-tile {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:var(--radius-md); padding:22px 18px;
+  transition:all 0.3s ease;
+  position: relative;
+  border-top: 2px solid var(--border);
+}
+.step-tile:hover {
+  border-color: var(--accent-border);
+  border-top-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(30,58,95,0.08);
+  transform: translateY(-3px);
+}
+.step-tile-num {
+  font-family:var(--font-mono); font-size:0.72rem; font-weight:700;
+  color:#fff; background: var(--accent);
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  margin-bottom:12px;
+}
+.step-tile-title {
+  font-family:var(--font-serif); font-size:0.92rem; font-weight:600;
+  margin-bottom:8px; color: var(--text-primary);
+}
+.step-tile-desc { font-size:0.76rem; line-height:1.55; color:var(--text-muted); }
+
+/* METRICS — navy background for contrast */
+.metrics-strip {
+  display:flex; align-items:center; justify-content:center;
+  background:var(--accent); border:none;
+  border-radius:var(--radius-lg); padding:32px 0; margin-bottom:56px;
+  box-shadow: 0 4px 20px rgba(30,58,95,0.2);
+}
+.metric-box { flex:1; text-align:center; padding:0 24px; }
+.metric-val {
+  font-family:var(--font-serif); font-size:1.5rem; font-weight:700;
+  margin-bottom:6px; color: #fff;
+}
+.metric-lbl { font-size:0.76rem; color: rgba(255,255,255,0.7); }
+.metric-divider { width:1px; height:44px; background:rgba(255,255,255,0.2); }
+
+@media (max-width: 900px) {
+  .launch-card-inner { grid-template-columns: 1fr; }
+  .launch-left { border-right:none; border-bottom:1px solid var(--border); }
+  .steps-row { grid-template-columns: 1fr 1fr; }
+  .hero-title { font-size: 2.4rem; }
+}
+</style>
